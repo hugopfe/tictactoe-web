@@ -50,6 +50,32 @@ function draw() {
 
 }
 
+function play(row, column) {
+    console.log(playerNumber())
+    if (table[row][column] == 0) {
+        switch (playerNumber()) {
+            case 1:
+                table[row][column] = 1
+                break
+            case 0:
+                table[row][column] = -1
+                break
+        }
+
+        message = 'Player: ' + (playerNumber() + 1)
+        if (check() == true) {
+            player++
+        }
+
+    } else {
+        message = "Already marked!"
+    }
+
+    draw()
+    console.table(table)
+}
+
+
 function check() {
     function switchScore(score) {
         switch (score) {
@@ -95,29 +121,4 @@ function check() {
     }
     
     return true
-}
-
-function play(row, column) {
-    console.log(playerNumber())
-    if (table[row][column] == 0) {
-        switch (playerNumber()) {
-            case 1:
-                table[row][column] = 1
-                break
-            case 0:
-                table[row][column] = -1
-                break
-        }
-
-        message = 'Player: ' + (playerNumber() + 1)
-        if (check() == true) {
-            player++
-        }
-
-    } else {
-        message = "Already marked!"
-    }
-
-    draw()
-    console.table(table)
 }
